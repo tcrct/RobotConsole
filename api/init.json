@@ -8,13 +8,13 @@
     "href": "page/welcome-1.html?mpi=m-p-i-0"
   },
   "logoInfo": {
-    "title": "LayuiMini",
+    "title": "Robot 控制台",
     "image": "images/logo.png",
     "href": ""
   },
   "menuInfo": {
     "currency": {
-      "title": "常规管理",
+      "title": "调度管理",
       "icon": "fa fa-address-book",
       "child": [
         {
@@ -44,25 +44,25 @@
           ]
         },
         {
-          "title": "菜单管理",
-          "href": "page/menu.html",
+          "title": "控制面板",
+          "href": "page/dispatch/controlPanel.html",
           "icon": "fa fa-window-maximize",
           "target": "_self"
         },
         {
-          "title": "系统设置",
-          "href": "page/setting.html",
+          "title": "工站任务编排",
+          "href": "page/dispatch/taskSetting.html",
           "icon": "fa fa-gears",
           "target": "_self"
         },
         {
-          "title": "表格示例",
+          "title": "车辆管理",
           "href": "page/table.html",
           "icon": "fa fa-file-text",
           "target": "_self"
         },
         {
-          "title": "表单示例",
+          "title": "设备管理",
           "href": "",
           "icon": "fa fa-calendar",
           "target": "_self",
@@ -138,31 +138,37 @@
       ]
     },
     "component": {
-      "title": "组件管理",
+      "title": "系统管理",
       "icon": "fa fa-lemon-o",
       "child": [
         {
-          "title": "图标列表",
+          "title": "用户管理",
           "href": "page/icon.html",
-          "icon": "fa fa-dot-circle-o",
+          "icon": "fa fa-user",
           "target": "_self"
         },
         {
-          "title": "图标选择",
+          "title": "角色管理",
           "href": "page/icon-picker.html",
           "icon": "fa fa-adn",
           "target": "_self"
         },
         {
-          "title": "颜色选择",
+          "title": "权限管理",
           "href": "page/color-select.html",
           "icon": "fa fa-dashboard",
           "target": "_self"
         },
         {
-          "title": "下拉选择",
+          "title": "部门管理",
           "href": "page/table-select.html",
           "icon": "fa fa-angle-double-down",
+          "target": "_self"
+        },
+        {
+          "title": "公司管理",
+          "href": "page/system/company.html",
+          "icon": "fa fa-arrow-up",
           "target": "_self"
         },
         {
@@ -186,7 +192,7 @@
       ]
     },
     "other": {
-      "title": "其它管理",
+      "title": "数据中心",
       "icon": "fa fa-slideshare",
       "child": [
         {
