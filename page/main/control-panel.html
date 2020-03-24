@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>控制面板</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="text/javascript" src="../../lib/layui-v2.5.5/layui.js"></script>
+    <link rel="stylesheet" href="../../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../css/public.css" media="all">
+    <!-- ztree-->
+    <link rel="stylesheet" href="../../lib/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../lib/ztree/js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="../../lib/ztree/js/jquery.ztree.core.js"></script>
+    <style>
+        .layui-card {
+            border: 1px solid #f2f2f2;
+            border-radius: 5px;
+        }
+
+        .margin-left10 {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="layuimini-container">
+    <!-- 第一列 -->
+    <div class="layui-col-md2">
+        <!-- 组件管理，以树型(ztree)菜单显示 -->
+        <div class="layui-card">
+            <div class="layui-card-header"><i class="fa fa-warning icon"></i>组件管理</div>
+            <div class="layui-card-body">
+                <ul class="ztree" id="component_div"></ul>
+            </div>
+        </div>
+        <!-- 组件属性 -->
+        <div class="layui-card">
+            <div class="layui-card-header"><i class="fa fa-warning icon"></i>组件属性</div>
+            <div class="layui-card-body">
+                <table class="layui-hide" id="component_properties_table"></table>
+            </div>
+        </div>
+        <!-- 行驶日志消息 -->
+        <div class="layui-card">
+            <div class="layui-card-header"><i class="fa fa-warning icon"></i>日志消息</div>
+            <div class="layui-card-body" id="travel_log_div"  style="height: 112px">
+                <p>车辆 A001 到达 点 100</p>
+                <p>车辆 A002 空闲 等待分配任务</p>
+                <p>车辆 A003 到达 点 100，正在执行工站操作，等待完成！</p>
+                <p>车辆 A004 执行完成工站任务，待分配任务</p>
+            </div>
+        </div>
+    </div>
+    <!-- 第二列 -->
+    <div class="layui-col-md2">
+        <!-- 车辆列表 -->
+        <div class="layui-card margin-left10">
+            <div class="layui-card-header"><i class="fa fa-warning icon"></i>车辆列表</div>
+            <div class="layui-card-body"  style="height: 1100px; background-color: #fff">
+                <!-- A001 -->
+                <div class="layui-col-md12" style="padding-top:10px;padding-bottom: 10px">
+                    <div class="layadmin-contact-box">
+                        <div class="layui-col-md6" style="padding-top: 10px; text-align: center">
+                            <a href="javascript:;">
+                                <div class="layui-inline">
+                                    <img src="../../images/logo.png" class="layui-circle">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="layui-col-md6 ">
+                            <p class="layadmin-textimg">名称：<strong>A001</strong></p>
+                            <p class="layadmin-textimg">电量：<strong>100%</strong></p>
+                            <p class="layadmin-textimg">集成等级：<strong>跟随车辆</strong></p>
+                            <p class="layadmin-textimg">当前位置：<strong>100</strong></p>
+                            <p class="layadmin-textimg">状态：<strong>空闲</strong></p>
+                            <p class="layadmin-textimg">目的地：<strong>L001</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="layui-bg-gray">
+                <!-- A002 -->
+                <div class="layui-col-md12" style="padding-top:10px;padding-bottom: 10px">
+                    <div class="layadmin-contact-box">
+                        <div class="layui-col-md6" style="padding-top: 10px; text-align: center">
+                            <a href="javascript:;">
+                                <div class="layui-inline">
+                                    <img src="../../images/logo.png" class="layui-circle">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="layui-col-md6 ">
+                            <p class="layadmin-textimg">名称：<strong>A002</strong></p>
+                            <p class="layadmin-textimg">电量：<strong>100%</strong></p>
+                            <p class="layadmin-textimg">集成等级：<strong>跟随车辆</strong></p>
+                            <p class="layadmin-textimg">当前位置：<strong>100</strong></p>
+                            <p class="layadmin-textimg">状态：<strong>空闲</strong></p>
+                            <p class="layadmin-textimg">目的地：<strong>L001</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="layui-bg-gray">
+                <!-- A003 -->
+                <div class="layui-col-md12" style="padding-top:10px;padding-bottom: 10px">
+                    <div class="layadmin-contact-box">
+                        <div class="layui-col-md6" style="padding-top: 10px; text-align: center">
+                            <a href="javascript:;">
+                                <div class="layui-inline">
+                                    <img src="../../images/logo.png" class="layui-circle">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="layui-col-md6 ">
+                            <p class="layadmin-textimg">名称：<strong>A003</strong></p>
+                            <p class="layadmin-textimg">电量：<strong>100%</strong></p>
+                            <p class="layadmin-textimg">集成等级：<strong>跟随车辆</strong></p>
+                            <p class="layadmin-textimg">当前位置：<strong>100</strong></p>
+                            <p class="layadmin-textimg">状态：<strong>空闲</strong></p>
+                            <p class="layadmin-textimg">目的地：<strong>L003</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="layui-bg-gray">
+                <!-- A004 -->
+                <div class="layui-col-md12" style="padding-top:10px;padding-bottom: 10px">
+                    <div class="layadmin-contact-box">
+                        <div class="layui-col-md6" style="padding-top: 10px; text-align: center">
+                            <a href="javascript:;">
+                                <div class="layui-inline">
+                                    <img src="../../images/logo.png" class="layui-circle">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="layui-col-md6 ">
+                            <p class="layadmin-textimg">名称：<strong>A004</strong></p>
+                            <p class="layadmin-textimg">电量：<strong>100%</strong></p>
+                            <p class="layadmin-textimg">集成等级：<strong>跟随车辆</strong></p>
+                            <p class="layadmin-textimg">当前位置：<strong>100</strong></p>
+                            <p class="layadmin-textimg">状态：<strong>空闲</strong></p>
+                            <p class="layadmin-textimg">目的地：<strong>L003</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 第三列 -->
+    <div class="layui-col-md8">
+        <!-- 行驶地图 -->
+        <div class="layui-card margin-left10">
+            <div class="layui-card-header"><i class="fa fa-warning icon"></i>行驶地图</div>
+            <div class="layui-card-body" style="text-align: center; height: 1100px">
+                <img src="../../images/OCV/OCV.png" style="width: 100%;">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../js/main/componentTree.js"></script>
+<script type="text/javascript" src="../../js/main/componentPropertiesTable.js"></script>
+</body>
+</html>

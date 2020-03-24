@@ -45,13 +45,13 @@
         },
         {
           "title": "控制面板",
-          "href": "page/dispatch/controlPanel.html",
+          "href": "page/main/control-panel.html",
           "icon": "fa fa-window-maximize",
           "target": "_self"
         },
         {
           "title": "工站任务编排",
-          "href": "page/dispatch/taskSetting.html",
+          "href": "page/location/task-setting.html",
           "icon": "fa fa-gears",
           "target": "_self"
         },
