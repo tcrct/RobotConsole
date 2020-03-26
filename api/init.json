@@ -45,13 +45,13 @@
         },
         {
           "title": "控制面板",
-          "href": "page/dispatch/controlPanel.html",
+          "href": "page/main/control-panel.html",
           "icon": "fa fa-window-maximize",
           "target": "_self"
         },
         {
           "title": "工站任务编排",
-          "href": "page/dispatch/taskSetting.html",
+          "href": "page/location/task-setting.html",
           "icon": "fa fa-gears",
           "target": "_self"
         },
@@ -143,13 +143,13 @@
       "child": [
         {
           "title": "用户管理",
-          "href": "page/icon.html",
+          "href": "page/table.html",
           "icon": "fa fa-user",
           "target": "_self"
         },
         {
           "title": "角色管理",
-          "href": "page/icon-picker.html",
+          "href": "page/system/role.html",
           "icon": "fa fa-adn",
           "target": "_self"
         },
@@ -167,7 +167,7 @@
         },
         {
           "title": "公司管理",
-          "href": "page/system/company.html",
+          "href": "page/icon.html",
           "icon": "fa fa-arrow-up",
           "target": "_self"
         },
