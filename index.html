@@ -98,8 +98,11 @@
 
 <script src="lib/layui-v2.5.5/layui.js?v=1.0.4" charset="utf-8"></script>
 <script src="js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script type="text/javascript" src="./lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+<script src="js/utils/ApiConst.js" charset="utf-8"></script>
+<script src="js/utils/HttpKit.js" charset="utf-8"></script>
 <script>
-    layui.use(['element', 'layer', 'layuimini'], function () {
+    layui.use(['element', 'layer', 'layuimini'] , function () {
         var $ = layui.jquery,
             element = layui.element,
             layer = layui.layer;
@@ -112,6 +115,21 @@
             });
         });
     });
+    var param = {
+        "strategyName":"ztree",
+        "templateName":"opentcs_components",
+        "isSimple": "true",
+        "isNew":"false"
+    };
+    // var header= {"X-Api-Access-Key":"robot", "Content-Type":"application/json"};
+    // HttpKit.duang()
+    //     .url(API.MAIN.COMPONENT_TREE)
+    //     .param(param)
+    //     .header(header)
+    //     .post(function(data) {
+    //     console.log(data);
+    // })
+
 </script>
 </body>
 </html>
