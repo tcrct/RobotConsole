@@ -2,13 +2,14 @@
  * ztree api文档： http://www.treejs.cn/v3/api.php
  */
 var ztreeSetting = {
+    treeId:"ztree_componentTree",
     async: {
         enable: true,
         url : API.TREE.CREATE_TREE,
         dataType : "json",
         contentType: "application/json",
         type:"post",
-        headers: {"X-Api-Access-Key":"robot", "Content-Type":"application/json"},
+        headers: DEFAULT_HEADER,
         otherParam: createPostParam,
         dataFilter: ajaxDataFilter
     },
@@ -35,6 +36,7 @@ var zTree;
 });
 
 // ztree点击事件
+var component_properties_table;
 function onClick(event, treeId, treeNode, clickFlag) {
     var nodeParam = {
         "id": treeNode.id,
@@ -42,12 +44,41 @@ function onClick(event, treeId, treeNode, clickFlag) {
         "type" : treeNode.getParentNode().type,
         "text" : treeNode.text
     };
-    HttpKit.duang()
-        .url(API.TREE.GET_TREE_INFO)
-        .param(nodeParam)
-        .post(function (data) {
-            console.log(JSON.stringify(data));
+
+    layui.use('table', function() {
+        component_properties_table = layui.table;
+        component_properties_table.render({
+            id:"component_properties_table"
+            ,elem: '#component_properties_table'
+            ,url: API.MAIN.GET_COMPONENT_INFO
+            ,method: 'post'
+            ,contentType: 'application/json'
+            ,dataType: 'json'
+            ,headers: DEFAULT_HEADER
+            ,where: nodeParam
+            ,page: false
+            ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            ,cols: [[
+                {field:'id', title: 'ID', hide:true}
+                ,{field:'name', title: '属性'}
+                ,{field:'value', title: '值'}
+            ]]
+            ,response: {
+                statusCode: 0 //重新规定成功的状态码为 200，table 组件默认为 0
+            }
+            ,parseData: function(res){ //将原始数据解析成 table 组件所规定的数据
+                for(var i=0; i<res.data.length; i++) {
+                    res.data[i].id=nodeParam.type+"_"+i;
+                }
+                return {
+                    "code": res.head.code,
+                    "msg": res.head.message,
+                    // "count": res.data.totalCount,
+                    "data": res.data //解析数据列表
+                };
+            }
         });
+    });
 }
 
 // 提交参数
@@ -77,4 +108,22 @@ function ajaxDataFilter(treeId, parentNode, responseData) {
 function expandNode() {
     var nodes = zTree.getNodes();
     zTree.expandNode(nodes[0], true, true, true);
+    zTree.selectNode(nodes[0].children[0], false, false);
+    onClick(null, "ztree_componentTree", nodes[0].children[0], null);
+    setTimeout("aaa()", 1000);
+}
+
+function aaa() {
+    var checkStatus = component_properties_table.checkStatus('component_properties_table')
+    var data = checkStatus.data;
+
+    console.log(JSON.stringify(data));
+    // // console.log(component_properties_table);
+    // //监听单元格编辑
+    // component_properties_table.on('edit(component_properties_table)', function(obj){
+    //     var value = obj.value //得到修改后的值
+    //         ,data = obj.data //得到所在行所有键值
+    //         ,field = obj.field; //得到字段
+    //     layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
+    // });
 }
