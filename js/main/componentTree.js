@@ -106,11 +106,15 @@ function ajaxDataFilter(treeId, parentNode, responseData) {
 };
 
 function expandNode() {
-    var nodes = zTree.getNodes();
+    var nodes = zTree.getNodes()[0].children;
     zTree.expandNode(nodes[0], true, true, true);
-    zTree.selectNode(nodes[0].children[0], false, false);
-    onClick(null, "ztree_componentTree", nodes[0].children[0], null);
-    setTimeout("aaa()", 1000);
+    zTree.expandNode(nodes[1], true, false, false);
+    // console.log(nodes[0].children[0])
+    zTree.selectNode(nodes[0].children[0], true, true);
+    setTimeout(function () {
+        onClick(null, "ztree_componentTree", nodes[0].children[0], null);
+    }, 200);
+    // setTimeout("aaa()", 1000);
 }
 
 function aaa() {
