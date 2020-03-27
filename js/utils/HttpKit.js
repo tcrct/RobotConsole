@@ -78,10 +78,10 @@ HttpUtil.prototype.get = function(callback) {
     $.ajax({
         method: "get",
         url: this.requestUrl,
-        headers: checkIsNullOrEmpty(this.requestHeader) ? this.requestHeader : getDefaultHeaderParam(),
+        headers: checkIsNotNullOrEmpty(this.requestHeader) ? this.requestHeader : getDefaultHeaderParam(),
         dataType: this.responseDataType,
-        async: checkIsNullOrEmpty(this.asyncValue) ? this.asyncValue : true,
-        data: checkIsNullOrEmpty(this.requestParam) ? this.requestParam : "",
+        async: checkIsNotNullOrEmpty(this.asyncValue) ? this.asyncValue : true,
+        data: checkIsNotNullOrEmpty(this.requestParam) ? this.requestParam : "",
         processData: true,
         cache: false,
         success: function (data) {
@@ -98,14 +98,16 @@ HttpUtil.prototype.get = function(callback) {
  * @param callback
  */
 HttpUtil.prototype.post = function(callback) {
-    this.responseDataType = checkIsNullOrEmpty(this.responseDataType) ? this.responseDataType : "json";
+    this.responseDataType = checkIsNotNullOrEmpty(this.responseDataType) ? this.responseDataType : "json";
     $.ajax({
         method: "post",
         url: this.requestUrl,
-        headers: checkIsNullOrEmpty(this.requestHeader) ? this.requestHeader : getDefaultHeaderParam(),
+        headers: checkIsNotNullOrEmpty(this.requestHeader) ? this.requestHeader : getDefaultHeaderParam(),
         dataType: this.responseDataType,
-        async: checkIsNullOrEmpty(this.asyncValue) ? this.asyncValue : true,
-        data: checkIsNullOrEmpty(this.requestParam) && this.responseDataType.indexOf("json") > -1 ? JSON.stringify(this.requestParam) : this.requestParam,
+        async: checkIsNotNullOrEmpty(this.asyncValue) ? this.asyncValue : true,
+        data: checkIsNotNullOrEmpty(this.requestParam) && this.responseDataType.indexOf("json") > -1
+            ? JSON.stringify(this.requestParam)
+            : !checkIsNotNullOrEmpty(this.requestParam) ? {} : this.requestParam,
         processData: $.isPlainObject(this.requestParam) ? false : true,
         cache: false,
         success: function (data) {
@@ -180,7 +182,7 @@ var HttpKit = {
 */
 
 //判断数据是否为Null或者undefined或者为空字符串
-function checkIsNullOrEmpty(value) {
+function checkIsNotNullOrEmpty(value) {
     //正则表达式用于判斷字符串是否全部由空格或换行符组成
     var reg = /^\s*$/
     //返回值为true表示不是空字符串
