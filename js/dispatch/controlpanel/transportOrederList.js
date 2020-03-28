@@ -1,34 +1,24 @@
-layui.use(['table', 'element'],  function(){
+layui.use(['table'],  function(){
     var table = layui.table;
-    var element = layui.element;
-    var elem = "";
-    var whereParam;
-    element.on('tab(transportOrderTabBrief)', function(tabs){
-        if (tabs.index== 0) {
-            elem = "#order_progress_table";
-            whereParam = {"state": "BIGIN_PROGRESS"};
-        } else if (tabs.index == 1) {
-            elem = "#order_finished_table";
-            whereParam = {"state": "FINISHED"}
-        }
-    });
-
-
     table.render({
-        elem: elem
+        elem: "#transportOrder_table"
         ,url: API.TRANSPORT_ORDER.SEARCH
         ,header:DEFAULT_HEADER
         ,method: 'post'
         ,contentType: 'application/json'
         ,dataType: 'json'
-        ,where: whereParam
+        ,where: {}
         ,cols: [[
             {field:'id', title: 'id', hide:true}
-            ,{field:'orderId', width:330, title: '订单id'}
+            ,{field:'orderId', title: '订单id'}
             ,{field:'sourceName', width:180, title: '起始位置'}
             ,{field:'destName', width:180, title: '目标位置'}
             ,{field:'executeVehicle', width:180,title: '执行车辆'}
-            ,{field:'state', width:180, title: '状态'}
+            ,{field:'state', width:180, title: '状态', templet:function (row) {
+                if(row.state == "FINISHED") {
+                    return "完成";
+                }
+             }}
             ,{field:'startTime', width:180, title: '开始时间', sort: true}
             ,{field:'endTime', width:180, title: '结束时间'}
         ]]

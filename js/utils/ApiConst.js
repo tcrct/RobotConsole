@@ -4,7 +4,6 @@ var wsEndPoint =  "ws://127.0.0.01:55200";
 var DEFAULT_HEADER = {"X-Api-Access-Key":"robot", "Content-Type":"application/json"};
 
 var API = {
-
     TRANSPORT_ORDER: {
         SEARCH: endPoint + "/order/search"
     },

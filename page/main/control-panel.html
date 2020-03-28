@@ -30,27 +30,17 @@
     <!-- 第一列 -->
     <div class="layui-col-md2">
         <!-- 组件管理，以树型(ztree)菜单显示 -->
-        <div class="layui-card">
+        <div class="layui-card" style="height: 450px; overflow:auto">
             <div class="layui-card-header"><i class="fa fa-warning icon"></i>组件管理</div>
-            <div class="layui-card-body" style="overflow:auto">
+            <div class="layui-card-body">
                 <ul class="ztree" id="component_div"></ul>
             </div>
         </div>
         <!-- 组件属性 -->
-        <div class="layui-card">
+        <div class="layui-card" >
             <div class="layui-card-header"><i class="fa fa-warning icon"></i>组件属性</div>
             <div class="layui-card-body">
-                <table class="layui-hide" id="component_properties_table"></table>
-            </div>
-        </div>
-        <!-- 行驶日志消息 -->
-        <div class="layui-card">
-            <div class="layui-card-header"><i class="fa fa-warning icon"></i>日志消息</div>
-            <div class="layui-card-body" id="travel_log_div"  style="height: 112px">
-                <p>车辆 A001 到达 点 100</p>
-                <p>车辆 A002 空闲 等待分配任务</p>
-                <p>车辆 A003 到达 点 100，正在执行工站操作，等待完成！</p>
-                <p>车辆 A004 执行完成工站任务，待分配任务</p>
+                <table class="layui-hide" style="overflow:auto" id="component_properties_table"></table>
             </div>
         </div>
     </div>
@@ -64,28 +54,32 @@
     </div>
     <!-- 第三列 -->
     <div class="layui-col-md8">
-        <!-- 行驶地图 -->
-        <div class="layui-card margin-left10">
+        <!-- 移动订单 -->
+        <div class="layui-card margin-left10" style="height: 700px">
             <div class="layui-card-header"><i class="fa fa-warning icon"></i>移动订单</div>
-<!--            <div class="layui-card-body" style="text-align: center; height: 1100px">-->
+            <div class="layui-card-body" id="transportOrder_div">
+<!--                <div class="layui-card-body" style="text-align: center; height: 1100px">-->
 <!--                <img src="../../images/OCV/OCV.png" style="width: 100%;">-->
-<!--            </div>-->
-            <div class="layui-tab layui-tab-brief" lay-filter="transportOrderTabBrief">
-                <ul class="layui-tab-title">
-                    <li class="layui-this">进行中</li>
-                    <li>已完成</li>
-                </ul>
-                <div class="layui-tab-content">
-                    <div class="layui-tab-item layui-show">
-                        <table class="layui-hide" id="order_progress_table"></table>
-                    </div>
-                    <div class="layui-tab-item">
-                        <table class="layui-hide" id="order_finished_table"></table>
-                    </div>
-                </div>
+                <table class="layui-hide" id="transportOrder_table"></table>
             </div>
 
         </div>
+        <!-- 日志消息 -->
+        <div class="layui-card margin-left10">
+            <div class="layui-card-header"><i class="fa fa-warning icon"></i>日志消息</div>
+            <div class="layui-card-body" id="operation_log_div" style="overflow:auto; height: 350px">
+                <table lay-filter="operation_log_table" id="operation_log_table"  style="overflow:auto;">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'time', width:250, sort:true}">时间</th>
+                        <th lay-data="{field:'deviceId', width:180}">车辆/设备</th>
+                        <th lay-data="{field:'operationLog'}">日志信息</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
     </div>
 </div>
 <script src="../../js/utils/ApiConst.js" charset="utf-8"></script>
@@ -94,5 +88,6 @@
 <script type="text/javascript" src="../../js/dispatch/controlpanel/componentPropertiesTable.js"></script>
 <script type="text/javascript" src="../../js/dispatch/controlpanel/vehicleList.js"></script>
 <script type="text/javascript" src="../../js/dispatch/controlpanel/transportOrederList.js"></script>
+<script type="text/javascript" src="../../js/dispatch/controlpanel/operationLog.js"></script>
 </body>
 </html>
