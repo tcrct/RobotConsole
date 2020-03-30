@@ -8,8 +8,7 @@
             
             //如果浏览器支持WebSocket
             if(window.WebSocket){  
-                websocket = new WebSocket("ws://127.0.0.1:55200/ws?name=laotang");  //获得WebSocket对象
-                
+                websocket = new WebSocket("ws://127.0.0.1:55200/ws?userId=5e7961922bc98a5ad58c1584&tokenId=5e7961922bc98a5ad58c1584");  //获得WebSocket对象
                 //当有消息过来的时候触发
                 websocket.onmessage = function(event){ 
                     var respMessage = document.getElementById("respMessage");

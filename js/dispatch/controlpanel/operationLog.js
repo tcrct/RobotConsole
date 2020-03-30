@@ -7,6 +7,14 @@ layui.use(['table'],  function() {
         //支持所有基础参数
     });
 
+    var userId = new Date().getTime();
+    WebSocketKit.duang()
+        .url("ws://192.168.8.212:55200/ws?userId="+userId+"&tokenId="+userId)
+        .onMessage(function (data) {
+            addLog("operation_log_table", JSON.parse(data));
+    })
+
+    /*
     setTimeout(function () {
         var logData={
             "time":"2020-03-28 10:55:44",
@@ -15,6 +23,7 @@ layui.use(['table'],  function() {
         }
         addLog("operation_log_table", logData);
     }, 2000);
+     */
 
 });
 
@@ -42,12 +51,12 @@ function addLog(tableId, logData) {
 
     operationLogTable.reload(tableId, {data : operationLogTableDataArray});
 
-    setTimeout(function () {
-        var logData={
-            "time":new Date(),
-            "deviceId":"A001",
-            "operationLog":"车辆 A003 到达 点 100，正在执行工站操作，等待完成！"
-        }
-        addLog("operation_log_table", logData);
-    }, 1000);
+    // setTimeout(function () {
+    //     var logData={
+    //         "time":new Date(),
+    //         "deviceId":"A001",
+    //         "operationLog":"车辆 A003 到达 点 100，正在执行工站操作，等待完成！"
+    //     }
+    //     addLog("operation_log_table", logData);
+    // }, 1000);
 }
