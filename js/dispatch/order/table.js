@@ -10,11 +10,13 @@ layui.use(['form', 'table', 'laydate'], function () {
     laydate.render({
         elem: '#transportOrder_startTime' //指定元素
         ,type: 'datetime'
+        ,range: '至'
+        ,format: 'yyyy-MM-dd HH:mm:ss'
     });
-    laydate.render({
-        elem: '#transportOrder_endTime' //指定元素
-        ,type: 'datetime'
-    });
+    // laydate.render({
+    //     elem: '#transportOrder_endTime' //指定元素
+    //     ,type: 'datetime'
+    // });
 
     // 初始化搜索车辆下拉框
     initSearchVehicleSelect(form);
@@ -106,7 +108,7 @@ function initSearchVehicleSelect(form) {
         var data = result.data;
         var optionHtml = "<option value=''>请选择</option>";
         for (var i=0; i<data.length; i++) {
-            optionHtml += "<option value='"+data[i].id+"'>" + data[i].vehicleName + "</option>";
+            optionHtml += "<option value='"+data[i].vehicleName+"'>" + data[i].vehicleName + "</option>";
         }
         // console.log(optionHtml)
         $("#transportOrder_executeVehicle").html(optionHtml);
