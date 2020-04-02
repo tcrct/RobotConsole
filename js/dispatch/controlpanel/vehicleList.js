@@ -24,11 +24,11 @@ function createVehicleSimpleList(responseData) {
             "    </div>" +
             "    <div class='layui-col-md6'>" +
             "       <p class='layadmin-textimg'>名称：<strong>"+vehicle.vehicleName+"</strong></p>" +
-            "       <p class='layadmin-textimg'>电量：<strong>"+vehicle.energyLevel+"%</strong></p>" +
-            "       <p class='layadmin-textimg'>集成等级：<strong>"+vehicle.integrationLevel+"</strong></p>" +
-            "       <p class='layadmin-textimg'>当前位置：<strong>"+vehicle.currentPosition+"</strong></p>" +
-            "       <p class='layadmin-textimg'>状态：<strong>"+vehicle.state+"</strong></p>" +
-            "       <p class='layadmin-textimg'>目的地：<strong>"+ ((undefined == vehicle.destPosition) ? "未知" : vehicle.destPosition) +"</strong></p>" +
+            "       <p class='layadmin-textimg'>电量：<strong id='"+vehicle.vehicleName+"_vehicleList_energyLevel'>"+vehicle.energyLevel+"%</strong></p>" +
+            "       <p class='layadmin-textimg'>集成等级：<strong id='"+vehicle.vehicleName+"_vehicleList_integrationLevel'>"+vehicle.integrationLevel+"</strong></p>" +
+            "       <p class='layadmin-textimg'>当前位置：<strong id='"+vehicle.vehicleName+"_vehicleList_currentPosition'>"+vehicle.currentPosition+"</strong></p>" +
+            "       <p class='layadmin-textimg'>状态：<strong id='"+vehicle.vehicleName+"_vehicleList_state'>"+vehicle.state+"</strong></p>" +
+            "       <p class='layadmin-textimg'>目的地：<strong id='"+vehicle.vehicleName+"_vehicleList_destPosition'>"+ ((undefined == vehicle.destPosition) ? "未知" : vehicle.destPosition) +"</strong></p>" +
             "     </div>" +
             "   </div>" +
             "</div>"

@@ -4,6 +4,10 @@ var wsEndPoint =  "ws://192.168.8.212:55200";
 var DEFAULT_HEADER = {"X-Api-Access-Key":"robot", "Content-Type":"application/json"};
 
 var API = {
+    // WS的只能是一级目录??
+    WS :{
+        PUSHLOG: wsEndPoint + "/pushlog"
+    },
     TRANSPORT_ORDER: {
         SEARCH: endPoint + "/order/search"
     },

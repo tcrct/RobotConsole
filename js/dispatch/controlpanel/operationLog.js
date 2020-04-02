@@ -9,30 +9,41 @@ layui.use(['table'],  function() {
 
     var userId = new Date().getTime();
     WebSocketKit.duang()
-        .url("ws://192.168.8.212:55200/ws?userId="+userId+"&tokenId="+userId)
-        .onMessage(function (data) {
-            addLog("operation_log_table", JSON.parse(data));
+        .url(API.WS.PUSHLOG +"?userId="+userId+"&tokenId="+userId)
+        .onMessage(function (pushLogDto) {
+            addLog("operation_log_table", JSON.parse(pushLogDto));
     })
-
-    /*
-    setTimeout(function () {
-        var logData={
-            "time":"2020-03-28 10:55:44",
-            "deviceId":"A001",
-            "operationLog":"车辆 A003 到达 点 100，正在执行工站操作，等待完成！"
-        }
-        addLog("operation_log_table", logData);
-    }, 2000);
-     */
-
 });
 
 var operationLogTableDataArray = [];
-function addLog(tableId, logData) {
-    // layui.use(['table'],  function() {
-    //     var operationLogTable = layui.table;
-    //     operationLogTable.reload(tableId, {data : logDataArray});
-    // });
+function addLog(tableId, pushLogDto) {
+
+    var cmdDesc = pushLogDto.cmd;
+    var deviceName = pushLogDto.deviceName;
+    var currentPosition = pushLogDto.currentPosition;
+    var startPosition = pushLogDto.startPosition;
+    var endPosition = pushLogDto.endPosition;
+    var status = pushLogDto.status;
+    var body = "";
+
+    // 更新车辆列表里的当前位置显示
+    updateVehicle(deviceName, status, currentPosition, endPosition);
+    switch (cmdDesc) {
+        case "上报RFID号":
+            body = "车辆["+deviceName+"]行驶到达["+currentPosition+"]位置";
+            break;
+        case "下发路径指令":
+            body = "车辆["+deviceName+"]接收到新的移动订单，从位置["+startPosition+"]移动到位置["+endPosition+"]"
+            break;
+        default :
+            body = "";
+    }
+
+    var logData = {
+        "time" : pushLogDto.time,
+        "body" : body
+    }
+
     var isArray = $.isArray(logData);
     var isPlainObject = $.isPlainObject(logData);
     if (!isArray && isPlainObject) {
@@ -50,13 +61,18 @@ function addLog(tableId, logData) {
     }
 
     operationLogTable.reload(tableId, {data : operationLogTableDataArray});
+}
 
-    // setTimeout(function () {
-    //     var logData={
-    //         "time":new Date(),
-    //         "deviceId":"A001",
-    //         "operationLog":"车辆 A003 到达 点 100，正在执行工站操作，等待完成！"
-    //     }
-    //     addLog("operation_log_table", logData);
-    // }, 1000);
+function updateVehicle(deviceName, status, currentPosition, endPosition) {
+    if (checkIsNotNullOrEmpty(currentPosition)) {
+        $("#" + deviceName + "_vehicleList_currentPosition").text(currentPosition);
+        $("#" + deviceName + "_component_currentPosition").text(currentPosition);
+    }
+    if (checkIsNotNullOrEmpty(status)) {
+        $("#" + deviceName + "_vehicleList_state").text(status);
+        $("#" + deviceName + "_component_state").text(status);
+    }
+    if (checkIsNotNullOrEmpty(endPosition)) {
+        $("#" + deviceName + "_vehicleList_destPosition").text(endPosition);
+    }
 }

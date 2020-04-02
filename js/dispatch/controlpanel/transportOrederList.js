@@ -22,6 +22,10 @@ layui.use(['table'],  function(){
             ,{field:'startTime', width:180, title: '开始时间', sort: true}
             ,{field:'endTime', width:180, title: '结束时间'}
         ]]
+        ,request: {
+            pageName: 'pageNo' //页码的参数名称，默认：page
+            ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+        }
         ,response: {
             statusCode: 0 //重新规定成功的状态码为 200，table 组件默认为 0
         }
@@ -29,10 +33,12 @@ layui.use(['table'],  function(){
             return {
                 "code": res.head.code,
                 "msg": res.head.message,
-                "count": res.data.totalCount,
-                "data": res.data.result //解析数据列表
+                "count": isEmpty(res.data) ? 0 : res.data.totalCount,
+                "data": isEmpty(res.data) ? null : res.data.result //解析数据列表
             };
         }
+        ,limits: [10, 15, 20, 25, 50, 100]
+        ,limit: 10
         ,page: true
     });
 });

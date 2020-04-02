@@ -61,7 +61,22 @@ function onClick(event, treeId, treeNode, clickFlag) {
             ,cols: [[
                 {field:'id', title: 'ID', hide:true}
                 ,{field:'name', title: '属性'}
-                ,{field:'value', title: '值'}
+                ,{field:'value', title: '值', templet: function(d){
+                    var id = "";
+                    if ("当前所在点" == d.name) {
+                        id = treeNode.text+"_component_currentPosition";
+                    }
+                    if("状态" == d.name) {
+                        id = treeNode.text+"_component_state";
+                    }
+
+                    if (id.length > 0) {
+                        return '<span id="'+id+'">' + d.value + '</span>'
+                    }
+                    else {
+                        return d.value;
+                    }
+                }}
             ]]
             ,response: {
                 statusCode: 0 //重新规定成功的状态码为 200，table 组件默认为 0
@@ -114,20 +129,5 @@ function expandNode() {
     setTimeout(function () {
         onClick(null, "ztree_componentTree", nodes[0].children[0], null);
     }, 200);
-    // setTimeout("aaa()", 1000);
 }
 
-function aaa() {
-    var checkStatus = component_properties_table.checkStatus('component_properties_table')
-    var data = checkStatus.data;
-
-    console.log(JSON.stringify(data));
-    // // console.log(component_properties_table);
-    // //监听单元格编辑
-    // component_properties_table.on('edit(component_properties_table)', function(obj){
-    //     var value = obj.value //得到修改后的值
-    //         ,data = obj.data //得到所在行所有键值
-    //         ,field = obj.field; //得到字段
-    //     layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
-    // });
-}
