@@ -9,7 +9,8 @@ var API = {
         PUSHLOG: wsEndPoint + "/pushlog"
     },
     TRANSPORT_ORDER: {
-        SEARCH: endPoint + "/order/search"
+        SEARCH: endPoint + "/order/search",
+        FIND_BY_ID: endPoint + "/order/findbyid"
     },
     LOGIN: {
         IN: endPoint + "/login/in",

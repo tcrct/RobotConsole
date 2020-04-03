@@ -20,7 +20,7 @@
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">订单ID</label>
-                            <div class="layui-input-inline">
+                            <div class="layui-input-inline" style="width: 350px">
                                 <input type="text" name="orderId" autocomplete="off" id="transportOrder_orderId" operator="like" class="layui-input">
                             </div>
                         </div>
@@ -28,16 +28,16 @@
                             <label class="layui-form-label">车辆名称</label>
                             <div class="layui-input-inline" >
                                 <div class="layui-form" lay-filter="transportOrder_executeVehicle">
-                                    <select name="executeVehicle" lay-verify="required" lay-search="" id="transportOrder_executeVehicle">
+                                    <select name="executeVehicle"  lay-search="" id="transportOrder_executeVehicle">
                                     </select>
                                 </div>
-<!--                                <input type="text" name="executeVehicle" autocomplete="off" id="transportOrder_executeVehicle"  class="layui-input">-->
+<!--                                <input type="text" name="executeVehicle" autocomplete="off" lay-verify="required" id="transportOrder_executeVehicle"  class="layui-input">-->
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">起止时间</label>
-                            <div class="layui-input-inline" style="width: 300px">
-                                <input type="text" name="startTime" autocomplete="off" id="transportOrder_startTime"  operator=">=" class="layui-input" >
+                            <div class="layui-input-inline" style="width: 350px">
+                                <input type="text" name="startEndTime" autocomplete="off" id="transportOrder_startEndTime"  class="layui-input" >
                             </div>
                         </div>
 <!--                        <div class="layui-inline">-->
@@ -47,14 +47,15 @@
 <!--                            </div>-->
 <!--                        </div>-->
                         <div class="layui-inline">
-                            <button type="submit" class="layui-btn layui-btn-primary" lay-submit  lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
+                            <button type="submit" class="layui-btn layui-btn-primary" lay-submit  lay-filter="data-search-btn"><i class="layui-icon layui-icon-search"></i> 搜 索</button>
+                            <button type="reset" class="layui-btn layui-btn-primary"><i class="layui-icon layui-icon-tips"></i> 重 置</button>
                         </div>
                     </div>
                 </form>
             </div>
         </fieldset>
 
-        <script type="text/html" id="toolbarDemo">
+        <script type="text/html" id="transportOrder_toolbar">
             <div class="layui-btn-container">
                 <button class="layui-btn layui-btn-sm data-add-btn"> 创建移动订单 </button>
 <!--                <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn"> 删除用户 </button>-->
@@ -62,8 +63,9 @@
         </script>
 
         <table class="layui-hide" id="transportOrder_table" lay-filter="transportOrder_table"></table>
+        <input type="hidden" id="transportOrder_table_selected_id" value=""/>
 
-        <script type="text/html" id="currentTableBar">
+        <script type="text/html" id="transportOrder_tableBar">
             <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>
