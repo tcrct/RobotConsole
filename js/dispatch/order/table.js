@@ -162,7 +162,7 @@ layui.use(['form', 'table', 'laydate'], function () {
                 shadeClose: false,
                 area: ['50%', '100%'],
                 btn: ["关闭"],
-                content: '/page/dispatch/order/form.html',
+                content: './form.html'
             });
             $(window).on("resize", function () {
                 layer.full(index);

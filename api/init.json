@@ -95,12 +95,12 @@
         },
         {
           "title": "任务管理",
-          "href": "page/location/task-setting.html",
+          "href": "",
           "icon": "fa fa-gears",
           "target": "_self",
           "child": [{
             "title": "工站任务编排",
-            "href": "page/form.html",
+            "href": "page/location/task-layout.html",
             "icon": "fa fa-list-alt",
             "target": "_self"
           }]
