@@ -100,7 +100,7 @@
           "target": "_self",
           "child": [{
             "title": "工站任务编排",
-            "href": "page/location/task-layout.html",
+            "href": "page/task/task-layout.html",
             "icon": "fa fa-list-alt",
             "target": "_self"
           }]

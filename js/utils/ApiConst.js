@@ -23,6 +23,10 @@ var API = {
     TREE : {
         CREATE_TREE : endPoint +"/tree/create",
         GET_TREE_INFO : endPoint + "/tree/info"
-    }
+    },
+    TASK : {
+        GET_TASK_SEARCH : endPoint + "/task/search",
+        TASK_SAVE : endPoint + "/task/save"
+    },
 };
 
