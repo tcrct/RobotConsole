@@ -6,13 +6,13 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <script type="text/javascript" src="../../lib/layui-v2.5.5/layui.js"></script>
-    <link rel="stylesheet" href="../../lib/layui-v2.5.5/css/layui.css" media="all">
-    <link rel="stylesheet" href="../../css/public.css" media="all">
+    <script type="text/javascript" src="../../../lib/layui-v2.5.5/layui.js"></script>
+    <link rel="stylesheet" href="../../../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../../css/public.css" media="all">
     <!-- ztree-->
-    <link rel="stylesheet" href="../../lib/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
-    <script type="text/javascript" src="../../lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="../../lib/ztree/js/jquery.ztree.core.js"></script>
+    <link rel="stylesheet" href="../../../lib/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../../lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../lib/ztree/js/jquery.ztree.core.js"></script>
     <style>
         .layui-card {
             border: 1px solid #f2f2f2;
@@ -29,22 +29,24 @@
     <div class="layui-col-md2">
         <div class="layui-card margin-left10" >
             <div class="layui-card-header"><i class="fa fa-warning icon"></i>任务查找分类</div>
-            <div style="padding: 0px;position: relative; line-height: 24px;">
-                <div class="layui-tab layui-tab-card">
-                    <ul class="layui-tab-title">
-                        <li class="layui-this">工站</li>
-                        <li>车辆</li>
-                    </ul>
-                    <div class="layui-tab-content" style="height: 1000px; overflow:auto;">
-                        <div class="layui-tab-item layui-show">
-                            <ul class="ztree" id="task_location_div"></ul>
-                        </div>
-                        <div class="layui-tab-item">
-                            <ul class="ztree" id="task_vehicle_div"></ul>
-                        </div>
+            <div class="layui-card-body">
+                <div class="layui-tab-content" style="height: 1000px; overflow:auto;">
+                    <div class="layui-tab-item layui-show">
+                        <ul class="ztree" id="task_location_div"></ul>
+                    </div>
+                    <div class="layui-tab-item">
+                        <ul class="ztree" id="task_vehicle_div"></ul>
                     </div>
                 </div>
             </div>
+<!--            <div style="padding: 0px;position: relative; line-height: 24px;">-->
+<!--                <div class="layui-tab layui-tab-card">-->
+<!--                    <ul class="layui-tab-title">-->
+<!--                        <li class="layui-this">工站</li>-->
+<!--                        <li>车辆</li>-->
+<!--                    </ul>                    -->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </div>
     <!-- 第二列 -->
@@ -85,7 +87,7 @@
                 <!-- 基础信息 -->
                 <div class="layui-card-header"><i class="fa fa-warning icon"></i>基础信息</div>
                 <div class="layui-card-body">
-                <form class="layui-form" action="" lay-filter="taskItemForm">
+                <form class="layui-form" action="" lay-filter="taskItemForm" id="taskItemForm">
                     <input type="hidden" name="id" id="task_action_id" />
                     <input type="hidden" name="actionKey" id="task_action_key" />
                     <div class="layui-form-item">
@@ -206,8 +208,8 @@
 
     });
 </script>
-<script src="../../js/utils/Tools.js" charset="utf-8"></script>
-<script src="../../js/utils/ApiConst.js" charset="utf-8"></script>
-<script src="../../js/utils/HttpKit.js" charset="utf-8"></script>
-<script type="text/javascript" src="../../js/dispatch/task/taskByLocationTree.js"></script>
+<script src="../../../js/utils/Tools.js" charset="utf-8"></script>
+<script src="../../../js/utils/ApiConst.js" charset="utf-8"></script>
+<script src="../../../js/utils/HttpKit.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../../js/dispatch/task/taskByLocationTree.js"></script>
 </html>

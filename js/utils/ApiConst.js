@@ -28,5 +28,9 @@ var API = {
         GET_TASK_SEARCH : endPoint + "/task/search",
         TASK_SAVE : endPoint + "/task/save"
     },
+    VEHICLE: {
+        SEARCH: endPoint + "/vehicle/search",
+        FIND_BY_ID: endPoint + "/vehicle/findbyid"
+    },
 };
 

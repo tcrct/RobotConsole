@@ -81,13 +81,13 @@
           "child": [
             {
               "title": "车辆管理",
-              "href": "page/form.html",
+              "href": "page/dispatch/device/vehicle/table.html",
               "icon": "fa fa-list-alt",
               "target": "_self"
             },
             {
               "title": "工站设备管理",
-              "href": "page/form-step.html",
+              "href": "page/dispatch/device/location/table.html",
               "icon": "fa fa-navicon",
               "target": "_self"
             }
@@ -100,7 +100,7 @@
           "target": "_self",
           "child": [{
             "title": "工站任务编排",
-            "href": "page/task/task-layout.html",
+            "href": "page/dispatch/task/task-layout.html",
             "icon": "fa fa-list-alt",
             "target": "_self"
           }]

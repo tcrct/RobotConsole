@@ -38,6 +38,21 @@ $(document).ready(function(){
 // ztree点击事件
 var task_summary_table;
 function onClick(event, treeId, treeNode, clickFlag) {
+
+    if (treeNode.pid == rootNodeId) {
+        return;
+    }
+
+    if (treeNode.text == "NOP") {
+        layer.alert('该工站下没有设置任务');
+        document.getElementById("taskItemForm").reset();
+        $("#task_summary_table_tbody").html("");
+        return;
+    }
+
+    document.getElementById("taskItemForm").reset();
+    $("#task_summary_table_tbody").html("");
+
     var nodeParam = {
         "pageNo": 0,
         "pageSize": 10,
@@ -250,14 +265,17 @@ function ajaxDataFilter(treeId, parentNode, responseData) {
     return responseData;
 };
 
+var rootNodeId;
 function expandNode() {
+    var rootNode = zTree.getNodes()[0];
+    rootNodeId = rootNode.id;
     var nodes = zTree.getNodes()[0].children;
-    zTree.expandNode(nodes[0], true, true, true);
+    // zTree.expandNode(nodes[0], true, true, true);
     // console.log(nodes[0].children[0])
-    // zTree.selectNode(nodes[0].children[0], true, true);
-    zTree.selectNode(nodes[0], true, true);
+    zTree.selectNode(nodes[0].children[0], true, true);
+    // zTree.selectNode(nodes[0], true, true);
     setTimeout(function () {
-        // onClick(null, "ztree_task_location", nodes[0].children[0], null);
+        onClick(null, "ztree_task_location", nodes[0].children[0], null);
     }, 200);
 }
 
