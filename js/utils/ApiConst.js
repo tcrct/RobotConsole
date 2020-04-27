@@ -1,5 +1,9 @@
-var endPoint  = "http://192.168.8.212:55200";
-var wsEndPoint =  "ws://192.168.8.212:55200";
+// var endPoint  = "http://192.168.8.212:55200";
+// var wsEndPoint =  "ws://192.168.8.212:55200";
+
+var endPoint  = "http://127.0.0.1:55200";
+var wsEndPoint =  "ws://127.0.0.1:55200";
+
 // 默认的header头信息
 var DEFAULT_HEADER = {"X-Api-Access-Key":"robot", "Content-Type":"application/json"};
 
