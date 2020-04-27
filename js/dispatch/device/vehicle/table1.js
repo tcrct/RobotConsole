@@ -1,20 +1,19 @@
-layui.use(['form', 'table', 'laydate'], function () {
+layui.use(['form', 'table'], function () {
     var $ = layui.jquery,
         form = layui.form,
         table = layui.table,
-        laydate = layui.laydate,
         layuimini = layui.layuimini;
 
 
     table.render({
-        elem: "#transportOrder_table"
-        ,url: API.TRANSPORT_ORDER.SEARCH
+        elem: "#vehicle_table"
+        ,url: API.VEHICLE.SEARCH
         ,header:DEFAULT_HEADER
         ,method: 'post'
         ,contentType: 'application/json'
         ,dataType: 'json'
         ,where: {}
-        ,toolbar: '#transportOrder_toolbar'
+        ,toolbar: '#vehicle_toolbar'
         ,defaultToolbar: ['filter', 'exports', 'print', {
             title: '提示',
             layEvent: 'LAYTABLE_TIPS',
@@ -22,18 +21,28 @@ layui.use(['form', 'table', 'laydate'], function () {
         }]
         ,cols: [[
             {field:'id', title: 'id', hide:true}
-            ,{field:'orderId', title: '订单名称'}
-            ,{field:'sourceName', width:180, title: '起始位置'}
-            ,{field:'destName', width:180, title: '目标位置'}
-            ,{field:'executeVehicle', width:180,title: '执行车辆'}
+            ,{field:'img', title: '图片'}
+            ,{field:'name', width:180, title: '名称'}
+            ,{field:'specs', width:180, title: '车身规格(长*宽*高)'}
+            ,{field:'transportOrderId', width:180,title: '移动订单'}
             ,{field:'state', width:180, title: '状态', templet:function (row) {
                     if(row.state == "FINISHED") {
                         return "完成";
                     }
                 }}
-            ,{field:'startTime', width:180, title: '开始时间', sort: true}
-            ,{field:'endTime', width:180, title: '结束时间'}
-            ,{title: '操作', width: 200, templet: '#transportOrder_tableBar', fixed: "right", align: "center"}
+            ,{field:'startTime', width:180, title: '车辆属性', sort: true}
+            ,{field:'endTime', width:180, title: '其它信息', templet:function (row) {
+                var rowHtml= "当前点："+"  "+"<br>" +
+                    "下一个点："+"  "+"<br>"+
+                    "电量："+"  "+"<br>"+
+                    "车头方向："+"  "+"<br>"+
+                    "最大前进速度："+"  "+"<br>"+
+                    "最大后退速度："+"  "+"<br>" +
+                    "执行订单次数："+"  "+"<br>" +
+                    "运行时间："+"  "+"<br>";
+                return rowHtml;
+            }}
+            ,{title: '操作', width: 200, templet: '#vehicle_tableBar', fixed: "right", align: "center"}
         ]]
         ,request: {
             pageName: 'pageNo' //页码的参数名称，默认：page
@@ -101,7 +110,7 @@ layui.use(['form', 'table', 'laydate'], function () {
         }
 
         //执行搜索重载
-        table.reload('transportOrder_table', {
+        table.reload('vehicle_table', {
             page: {
                 curr: 1
             }
@@ -143,15 +152,15 @@ layui.use(['form', 'table', 'laydate'], function () {
     });
 
     //监听表格复选框选择
-    table.on('checkbox(transportOrder_table)', function (obj) {
+    table.on('checkbox(vehicle_table)', function (obj) {
         console.log(obj)
     });
 
-    table.on('tool(transportOrder_table)', function (obj) {
+    table.on('tool(vehicle_table)', function (obj) {
         var data = obj.data;
         if (obj.event === 'edit') {
             // 将选中的行id对象设置到隐藏域，再由弹窗页取出值
-            $("#transportOrder_table_selected_id").val(data.id);
+            $("#vehicle_table_selected_id").val(data.id);
             var index = layer.open({
                 title: '查看订单',
                 type: 2,
@@ -186,7 +195,7 @@ function initSearchVehicleSelect(form) {
             optionHtml += "<option value='"+data[i].vehicleName+"'>" + data[i].vehicleName + "</option>";
         }
         // console.log(optionHtml)
-        $("#transportOrder_executeVehicle").html(optionHtml);
-        form.render('select', "transportOrder_executeVehicle"); //刷新select选择框渲染
+        $("#vehicle_executeVehicle").html(optionHtml);
+        form.render('select', "vehicle_executeVehicle"); //刷新select选择框渲染
     });
 }
