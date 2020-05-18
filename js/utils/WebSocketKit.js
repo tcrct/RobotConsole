@@ -1,10 +1,8 @@
 /**
- * 基于JQuery封装Http请求工具
- * HttpKit.duang()
- *      .param() // 请求参数
- *      .header() // 请求头
- *      .ansyPost(function())   //异步post方式提交
- *      .post();
+ *
+ * WebSocketKit.duang()
+ *      .url() // 连接地址
+ *      .onMessage(callback function); // 接收推送消息后，调用回调方法
  **/
 
 /**
